@@ -18,10 +18,14 @@
                 $query = "SELECT * FROM categories";
                 $categories = mysqli_query($connection, $query);
                 while($row = mysqli_fetch_assoc($categories)){
-                  $title = $row['cat_title'];
-                  echo "<li><a href='#'>{$title}</a></li>";
+                  $cat_title = $row['cat_title'];
+                  echo "<li><a href='#'>{$cat_title}</a></li>";
                 }
                ?>
+
+                <li>
+                  <a href="admin">admin</a>
+                </li>
 
             </ul>
         </div>
