@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "includes/header.php" ?>
-
+<?php include "includes/header.php"; ?>
+<?php include "includes/db.php"; ?>
 <body>
 
   <!-- Navigation -->
-  <?php include "includes/navbar.php" ?>
+  <?php include "includes/navbar.php"; ?>
 
     <!-- Page Content -->
     <div class="container">
