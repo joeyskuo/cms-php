@@ -12,7 +12,10 @@
     <div class="container">
 
         <div class="row">
-
+          <h1 class="page-header">
+              Latest Posts
+              <small>All Categories</small>
+          </h1>
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
@@ -27,10 +30,7 @@
                 $post_content = $row['post_content'];
 
                ?>
-                 <h1 class="page-header">
-                     Page Heading
-                     <small>Secondary Text</small>
-                 </h1>
+
 
                  <!-- First Blog Post -->
                  <h2>
