@@ -1,7 +1,7 @@
 <?php
 
 function search() {
-  global $connection; 
+  global $connection;
   if(isset($_POST['submit'])){
     $search = $_POST['search'];
 
@@ -21,4 +21,8 @@ function search() {
   }
 }
 
+
+function showPosts() {
+
+}
 ?>
