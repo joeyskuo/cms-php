@@ -53,6 +53,33 @@
                             Welcome to admin
                             <small>Author</small>
                         </h1>
+
+                        <?php
+
+                        if(isset($_POST['submit'])) {
+
+                          $cat_title = $_POST['cat_title'];
+
+                          if($cat_title == "" || empty($cat_title)) {
+
+                            echo "This field should not be empty";
+
+                          } else {
+
+                            $query = "INSERT INTO categories(cat_title)";
+                            $query .= "VALUE('{$cat_title}')";
+
+                            $create_category_query = mysqli_query($connection, $query);
+
+                            if(!$create_category_query) {
+                              die('QUERY FAILED' . mysqli_error($connection));
+                            }
+
+                          }
+
+                        }
+                         ?>
+
                         <div class="col-xs-6">
                           <form action="" method="post">
                             <div class="form-group">
@@ -67,8 +94,7 @@
                         </div>
                         <div class="col-xs-6">
                           <?php
-                          $query = "SELECT * FROM categories";
-                          $select_categories = mysqli_query($connection,$query); ?>
+ ?>
 
                           <table class="table table-bordered table-hover">
                             <thead>
@@ -78,15 +104,32 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <?php
+                              <?php // FIND ALL CATEGORIES QUERY
+                              $query = "SELECT * FROM categories";
+                              $select_categories = mysqli_query($connection,$query);
                               while($row = mysqli_fetch_assoc($select_categories)) {
                                 $cat_id = $row['cat_id'];
                                 $cat_title = $row['cat_title'];
                                 echo "<tr>";
                                 echo "<td>{$cat_id}</td>";
                                 echo "<td>{$cat_title}</td>";
+                                echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
                                 echo "<tr>";
                               } ?>
+
+                              <?php
+
+                                if(isset($_GET['delete'])){
+
+                                  $cat_del_id = $_GET['delete'];
+                                  $query = "DELETE FROM categories WHERE cat_id = {$cat_del_id} ";
+                                  $del_query = mysqli_query($connection, $query);
+                                  header("Location: categories.php");
+                                }
+
+                               ?>
+
+
                             </tbody>
 
 
